@@ -9,6 +9,10 @@
   "keywords": [],
   "author": "Emre Kaynak",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ekaynak94/project-03-tdd"
+  },
   "devDependencies": {
     "jest-cli": "^24.8.0"
   }
