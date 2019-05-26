@@ -1,0 +1,15 @@
+{
+  "name": "project-03",
+  "version": "1.0.0",
+  "description": "A TDD vending machine implementation using Javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --verbose"
+  },
+  "keywords": [],
+  "author": "Emre Kaynak",
+  "license": "ISC",
+  "devDependencies": {
+    "jest-cli": "^24.8.0"
+  }
+}
