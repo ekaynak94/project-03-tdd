@@ -25,6 +25,7 @@ class VendingMachine {
         if (!this._coins[coin]) throw new Error('currency not recognized');
         this._coins[coin].number = this._coins[coin].number + 1;
         this._userFunds += this._coins[coin].value;
+        return `Available funds: ${this._userFunds}`;
     }
 
     get userFunds() {

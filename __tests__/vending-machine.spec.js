@@ -12,7 +12,6 @@ describe('VendingMachine', () => {
         
         beforeEach(() => {
             test.vendingMachine = new VendingMachine();
-            test.vendingMachine.insertCoin("dimes");
         });
 
         describe('if inserted unknown currency', () => {
@@ -23,13 +22,14 @@ describe('VendingMachine', () => {
 
         describe('if inserted a known currency', () => {
             it('coin count of that currency should increment by one', () => {
+                test.vendingMachine.insertCoin("dimes");
                 expect(test.vendingMachine._coins.dimes.number).toStrictEqual(1);
             });
         });
 
         describe('if inserted coin', () => {
-            it('userfunds should increase by the value of inserted coin', () => {
-                expect(test.vendingMachine.userFunds).toStrictEqual(0.1);
+            it('should return accumulated user funds', () => {
+                expect(test.vendingMachine.insertCoin("dimes")).toStrictEqual(`Available funds: 0.1`);
             });
         })
 
