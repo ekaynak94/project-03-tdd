@@ -25,7 +25,7 @@ describe('VendingMachine', () => {
         describe('if inserted coin', () => {
 
             beforeEach(() => {
-                test.expectedNumberOfDimes = test.vendingMachine._coins.dimes.number+1;
+                test.expectedNumberOfDimes = test.vendingMachine._coins.dimes.quantity+1;
                 test.message=test.vendingMachine.insertCoin("dimes");    
             });
 
@@ -38,7 +38,7 @@ describe('VendingMachine', () => {
             });
 
             it('coin count of that currency should increment by one', () => {
-                expect(test.vendingMachine._coins.dimes.number).toStrictEqual(test.expectedNumberOfDimes);
+                expect(test.vendingMachine._coins.dimes.quantity).toStrictEqual(test.expectedNumberOfDimes);
             });
 
         })

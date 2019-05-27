@@ -2,33 +2,33 @@
     "coins":{
         "nickels":{ 
             "value":0.05 ,
-             "number":10 },
+             "quantity":10 },
         "dimes":{ 
             "value":0.10 , 
-            "number":10 },
+            "quantity":10 },
         "quarters":{
              "value":0.25 ,
-             "number":10 },
+             "quantity":10 },
         "loonies":{
              "value":1 , 
-             "number":10 },
+             "quantity":10 },
         "toonies":{ 
             "value":2 ,
-            "number":10 }
+            "quantity":10 }
     },
     "inventory":{
         "snickers": { 
-           "price":1.90 , "number":10 },
+           "price":1.90 , "quantity":10 },
         "twix": { 
-            "price":2 , "number":10 },
+            "price":2 , "quantity":10 },
         "doritos": { 
-            "price":1.24 , "number":5 },
+            "price":1.24 , "quantity":5 },
         "coke": { 
-            "price":2.45 , "number":0 },
+            "price":2.45 , "quantity":0 },
         "fanta": { 
-            "price":2.40 , "number":8 },
+            "price":2.40 , "quantity":8 },
         "water": { 
-            "price":0.75 , "number":15 }
+            "price":0.75 , "quantity":15 }
     },
     "loaded":0
 }
