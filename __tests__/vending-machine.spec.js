@@ -13,7 +13,7 @@ describe('VendingMachine', () => {
     describe('coins', () => {
         
         beforeEach(() => {
-            test.vendingMachine = new VendingMachine();
+            test.vendingMachine = new VendingMachine(initialState);
             test.coins = test.initialMachine.coins;
         });
 
@@ -58,7 +58,7 @@ describe('VendingMachine', () => {
 
     describe('inventory', () => {
         beforeEach(() => {
-            test.vendingMachine = new VendingMachine();
+            test.vendingMachine = new VendingMachine(initialState);
             test.inventory = test.initialMachine.inventory;
             test.coins = test.initialMachine.coins;
         });

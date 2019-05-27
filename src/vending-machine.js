@@ -1,7 +1,5 @@
-const initialState =require('../imports/initial-vending-machine.json');
-
 class VendingMachine {
-    constructor() {
+    constructor(initialState) {
         this.inventory = { ...initialState.inventory };
         this._coins = { ...initialState.coins };
         this._loaded = initialState.loaded;
