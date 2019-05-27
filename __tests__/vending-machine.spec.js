@@ -18,7 +18,14 @@ describe('VendingMachine', () => {
             it('should return an error', () => {
                 expect(() => { test.vendingMachine.insertCoin("penny"); }).toThrow(new Error('currency not recognized'));
             });
-        })
+        });
+
+        describe('if inserted a known currency', () => {
+            it('coin count of that currency should increment by one', () => {
+                test.vendingMachine.insertCoin("dimes");
+                expect(test.vendingMachine._coins.dimes.number).toStrictEqual(1);
+            });
+        });
 
     });
 
