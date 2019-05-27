@@ -30,8 +30,8 @@ describe('VendingMachine', () => {
                 test.message=test.vendingMachine.insertCoin("dimes");    
             });
 
-            it('should return total loaded amount as a message', () => {
-                expect(test.message).toStrictEqual(`Total amount loaded: 0.1`);
+            it('should return a message', () => {
+                expect(test.message).toStrictEqual('coin inserted');
             });
 
             it('coin count of that currency should increment by one', () => {
