@@ -1,3 +1,5 @@
+const initialState =require('../imports/initial-vending-machine.json');
+
 class VendingMachine {
     constructor() {
         this.inventory = {};
@@ -32,7 +34,10 @@ class VendingMachine {
         return this._loaded;
     }
 
-    returnChange(){}
+    resupplyCoins() {
+        this._coins = { ...initialState.coins };
+        return this._coins;
+    }
 }
 
 module.exports = VendingMachine;
