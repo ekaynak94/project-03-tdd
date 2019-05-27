@@ -1,11 +1,13 @@
 const VendingMachine = require("../src/vending-machine.js");
-initialState =require('../imports/initial-vending-machine.json');
+const initialState =require('../imports/initial-vending-machine.json');
 
 describe('VendingMachine', () => {
 
+    let test;
+
     beforeEach(() => {
-        const test = {};
-        test.sampleMachine = initialState;
+        test = {};
+        test.sampleMachine = initialState;       
     });
 
     describe('insertCoin()', () => {
@@ -35,6 +37,15 @@ describe('VendingMachine', () => {
 
     });
 
+    describe('resupplyCoins()', () => {
+        beforeEach(() => {
+            test.vendingMachine = new VendingMachine();
+        });
 
+        it('should reset coin numbers in the machine to be equal to the initial states', () => {
+            expect(test.vendingMachine.resupplyCoins()).toEqual(test.sampleMachine.coins);
+        })
+        
+    });
 
 });
