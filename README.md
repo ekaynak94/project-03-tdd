@@ -27,7 +27,7 @@ A javascript class to implement a Vending Machine algorith and series of tests t
 
 ### Test Results
 
-![Test Results](./screenshot.png)
+![Test Results](./screenshots/screenshot.png)
 
 - Download zip file or clone repo.
 - Run npm install in the root directory.
