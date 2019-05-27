@@ -61,7 +61,7 @@ describe('VendingMachine', () => {
         
         describe('printInventory', () => { 
             it('should return all items in inventory alphabetically ordered and uppercased', () => {
-                expect(test.vendingMachine.printInventory()).toStrictEqual('COKE, DORITOS, FANTA, SNICKERS, TWIX, WATER')
+                expect(test.vendingMachine.printInventory()).toStrictEqual('DORITOS, FANTA, SNICKERS, TWIX, WATER')
             });
         })
         

@@ -53,7 +53,7 @@ class VendingMachine {
     }
 
     printInventory() {
-        return Object.keys(this.inventory).sort().map(name=>name.toUpperCase()).join(', ');
+        return Object.keys(this.inventory).filter(item=>this.inventory[item].number>0).sort().map(name=>name.toUpperCase()).join(', ');
     }
 }
 
