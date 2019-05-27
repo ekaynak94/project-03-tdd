@@ -51,6 +51,10 @@ class VendingMachine {
             change
         }
     }
+
+    printInventory() {
+        return Object.keys(this.inventory).sort().map(name=>name.toUpperCase()).join(', ');
+    }
 }
 
 module.exports = VendingMachine;
