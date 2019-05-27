@@ -10,7 +10,7 @@ describe('VendingMachine', () => {
         test.initialMachine = initialState;  
     });
 
-    describe('insertCoin()', () => {
+    describe('user attempts to insert a coin', () => {
         
         beforeEach(() => {
             test.vendingMachine = new VendingMachine();
@@ -22,17 +22,19 @@ describe('VendingMachine', () => {
             });
         });
 
-        describe('if inserted a known currency', () => {
-            it('coin count of that currency should increment by one', () => {
-                const expectedNumberOfDimes = test.vendingMachine._coins.dimes.number+1;
-                test.vendingMachine.insertCoin("dimes");
-                expect(test.vendingMachine._coins.dimes.number).toStrictEqual(expectedNumberOfDimes);
-            });
-        });
-
         describe('if inserted coin', () => {
-            it('should return total loaded amount', () => {
-                expect(test.vendingMachine.insertCoin("dimes")).toStrictEqual(`Total amount loaded: 0.1`);
+
+            beforeEach(() => {
+                test.expectedNumberOfDimes = test.vendingMachine._coins.dimes.number+1;
+                test.message=test.vendingMachine.insertCoin("dimes");    
+            });
+
+            it('should return total loaded amount as a message', () => {
+                expect(test.message).toStrictEqual(`Total amount loaded: 0.1`);
+            });
+
+            it('coin count of that currency should increment by one', () => {
+                expect(test.vendingMachine._coins.dimes.number).toStrictEqual(test.expectedNumberOfDimes);
             });
         })
 
