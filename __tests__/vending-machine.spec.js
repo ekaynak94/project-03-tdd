@@ -50,6 +50,25 @@ describe('VendingMachine', () => {
         
     });
 
-    
+    describe('returnChange()', () => {
+        beforeEach(() => {
+            test.vendingMachine = new VendingMachine();
+            test.vendingMachine._loaded = 18.75;
+            test.expectedChange = {
+                toonies: 9,
+                quarters:3
+            }
+        });
+
+        it('should return', () => {
+            expect(test.vendingMachine.returnChange()).toEqual(test.expectedChange)
+        });
+
+
+        it('should ', () => {
+           
+        })
+        
+    });
 
 });
