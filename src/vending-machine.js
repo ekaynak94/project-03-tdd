@@ -23,10 +23,8 @@ class VendingMachine {
         return this._coins;
     }
 
-    getChange() {
-        let valueToReturn = this._loaded;
-        this._loaded = 0;
-        const change=Object.keys(this._coins).sort((a, b) => this._coins[b].value - this._coins[a].value).reduce(
+    getChange(valueToReturn) {
+       return Object.keys(this._coins).sort((a, b) => this._coins[b].value - this._coins[a].value).reduce(
             (acc,cur) => {
                 const coinsToReturn = Math.min(Math.floor(valueToReturn / this._coins[cur].value),this._coins[cur].number);
                 valueToReturn -= coinsToReturn * this._coins[cur].value;
@@ -45,7 +43,13 @@ class VendingMachine {
         if (!this.inventory[item]) throw new Error('Item not found');
         if (this.inventory[item].number <= 0) throw new Error('Item out of stock');
         if (this._loaded < this.inventory[item].price) throw new Error('Loaded amount insufficent');
-
+        this.inventory[item].number = this.inventory[item].number - 1;
+        const change = this.getChange(this._loaded - this.inventory[item].price);
+        this._loaded = 0;
+        return {
+            item,
+            change
+        }
     }
 }
 
