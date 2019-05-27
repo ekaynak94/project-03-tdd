@@ -61,19 +61,19 @@ describe('VendingMachine', () => {
         
         describe('try purchasing an item that is not in the inventory', () => {
             it('should return an error message', () => {
-                expect(() => { purchaseItem('nutella') }).toThrow(new Error('Item not found'))
+                expect(() => { test.vendingMachine.purchaseItem('nutella') }).toThrow(new Error('Item not found'))
             });
         });
 
         describe('try purchasing an item with insufficent money provided', () => {
             it('should return an error message', () => {
-                expect(() => { purchaseItem('fanta') }).toThrow(new Error('Loaded amount insufficent'))
+                expect(() => { test.vendingMachine.purchaseItem('fanta') }).toThrow(new Error('Loaded amount insufficent'))
             });
         });
 
         describe('try purchasing an item that is out of stock', () => {
             it('should return an error message', () => {
-                expect(() => { purchaseItem('coke') }).toThrow(new Error('Item out of stock'))
+                expect(() => { test.vendingMachine.purchaseItem('coke') }).toThrow(new Error('Item out of stock'))
             });
         });
 
