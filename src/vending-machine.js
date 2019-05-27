@@ -20,7 +20,6 @@ class VendingMachine {
 
     resetCoins() {
         this._coins = { ...initialState.coins };
-        return this._coins;
     }
 
     getChange(valueToReturn) {
@@ -54,6 +53,10 @@ class VendingMachine {
 
     printInventory() {
         return Object.keys(this.inventory).filter(item=>this.inventory[item].number>0).sort().map(name=>name.toUpperCase()).join(', ');
+    }
+
+    resetInventory() {
+        this.inventory = { ...initialState.inventory };
     }
 }
 
