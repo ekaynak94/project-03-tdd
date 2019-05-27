@@ -18,7 +18,7 @@ class VendingMachine {
         return this._loaded;
     }
 
-    resupplyCoins() {
+    resetCoins() {
         this._coins = { ...initialState.coins };
         return this._coins;
     }
