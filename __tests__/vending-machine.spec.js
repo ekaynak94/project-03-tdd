@@ -59,6 +59,12 @@ describe('VendingMachine', () => {
             test.coins = test.initialMachine.coins;
         });
         
+        describe('printInventory', () => { 
+            it('should return all items in inventory alphabetically ordered and uppercased', () => {
+                expect(test.vendingMachine.printInventory()).toStrictEqual('COKE, DORITOS, FANTA, SNICKERS, TWIX, WATER')
+            });
+        })
+        
         describe('try purchasing an item that is not in the inventory', () => {
             it('should return an error message', () => {
                 expect(() => { test.vendingMachine.purchaseItem('nutella') }).toThrow(new Error('Item not found'))
@@ -97,9 +103,8 @@ describe('VendingMachine', () => {
                 it('should return an object with purchased expected change inside', () => {
                     expect(test.purchasedItem.change).toEqual(test.expectedChange);
                 })
-            })
 
-
+            });
 
         });
 
