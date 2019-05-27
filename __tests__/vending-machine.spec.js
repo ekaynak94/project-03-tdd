@@ -58,15 +58,15 @@ describe('VendingMachine', () => {
                 toonies: 9,
                 quarters:3
             }
+            test.expectedTooniesLeft = 1;
         });
 
-        it('should return', () => {
+        it('should return change with least amount of coins possible', () => {
             expect(test.vendingMachine.returnChange()).toEqual(test.expectedChange)
         });
 
-
-        it('should ', () => {
-           
+        it('should decrement coin numbers in inventory accordingly', () => {
+            expect(test.vendingMachine._coins.toonies.number).toEqual(1);
         })
         
     });
