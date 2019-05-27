@@ -24,7 +24,7 @@
         "doritos": { 
             " price":1.24 , "number":5 },
         "coke": { 
-            " price":2.45 , "number":8 },
+            " price":2.45 , "number":0 },
         "fanta": { 
         " price":2.40 , "number":8 },
         "water": { 
