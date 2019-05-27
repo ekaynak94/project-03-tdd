@@ -12,6 +12,17 @@ A javascript class to implement a Vending Machine algorith and series of tests t
 - Npm
 - Jest
 
+## How does the Vending Machine Work?
+
+- A new instance of Vending Machine object can be created from the VendingMachine class with new VendingMachine().
+- User can insert a coin using method insert coin and passing in an argument of coin type(toonies,loonies,quarters,dimes,nickels). Attemping to insert any other type of coins results in an error.
+- Loaded property within the object keeps track of the total value of the coins inserted by the user.
+- Print Inventory gives a list of items currenlty available within the vending machine.
+- After purchasing an item, an object including item and change properties is returned.
+- Item property has the name of the item purchased.
+- Change propery has an object that has 'the coin type name: number of such coins return' as key value pairs. It is expected to return least amount of coins possible by prioritizing returning larger valued coins first. If there are no coins left inside the machine small enough to return the full amount needed, then tough luck for the user it only returns as much as it has available in its inventory as any vending machine.
+- ResetInventory and resetCoins can be used to reset the state of the inventory and coins inside the machines to its initial state.
+
 ## How to Run
 
 ### Test Results
