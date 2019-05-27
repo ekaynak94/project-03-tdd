@@ -1,6 +1,6 @@
 class VendingMachine {
     constructor(initialState) {
-        this.inventory = { ...initialState.inventory };
+        this._inventory = { ...initialState.inventory };
         this._coins = { ...initialState.coins };
         this._loaded = initialState.loaded;
     }
@@ -33,11 +33,11 @@ class VendingMachine {
     }
 
     purchaseItem(item) {
-        if (!this.inventory[item]) throw new Error('Item not found');
-        if (this.inventory[item].number <= 0) throw new Error('Item out of stock');
-        if (this._loaded < this.inventory[item].price) throw new Error('Loaded amount insufficent');
-        this.inventory[item].number = this.inventory[item].number - 1;
-        const change = this.getChange(this._loaded - this.inventory[item].price);
+        if (!this._inventory[item]) throw new Error('Item not found');
+        if (this._inventory[item].number <= 0) throw new Error('Item out of stock');
+        if (this._loaded < this._inventory[item].price) throw new Error('Loaded amount insufficent');
+        this._inventory[item].number = this._inventory[item].number - 1;
+        const change = this.getChange(this._loaded - this._inventory[item].price);
         this._loaded = 0;
         return {
             item,
@@ -46,7 +46,7 @@ class VendingMachine {
     }
 
     printInventory() {
-        return Object.keys(this.inventory).filter(item=>this.inventory[item].number>0).sort().map(name=>name.toUpperCase()).join(', ');
+        return this._inventory;
     }
 
 }
