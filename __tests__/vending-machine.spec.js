@@ -7,13 +7,14 @@ describe('VendingMachine', () => {
 
     beforeEach(() => {
         test = {};
-        test.sampleMachine = initialState;       
+        test.sampleMachine = initialState;  
     });
 
     describe('insertCoin()', () => {
         
         beforeEach(() => {
             test.vendingMachine = new VendingMachine();
+            test.expectedNumberOfDimes = test.sampleMachine.coins.dimes.number+1;
         });
 
         describe('if inserted unknown currency', () => {
@@ -25,7 +26,7 @@ describe('VendingMachine', () => {
         describe('if inserted a known currency', () => {
             it('coin count of that currency should increment by one', () => {
                 test.vendingMachine.insertCoin("dimes");
-                expect(test.vendingMachine._coins.dimes.number).toStrictEqual(1);
+                expect(test.vendingMachine._coins.dimes.number).toStrictEqual(test.expectedNumberOfDimes);
             });
         });
 
@@ -40,10 +41,11 @@ describe('VendingMachine', () => {
     describe('resupplyCoins()', () => {
         beforeEach(() => {
             test.vendingMachine = new VendingMachine();
+            test.expectedCoins = test.sampleMachine.coins;
         });
 
         it('should reset coin numbers in the machine to be equal to the initial states', () => {
-            expect(test.vendingMachine.resupplyCoins()).toEqual(test.sampleMachine.coins);
+            expect(test.vendingMachine.resupplyCoins()).toEqual(test.expectedCoins);
         })
         
     });

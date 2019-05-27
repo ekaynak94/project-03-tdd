@@ -2,25 +2,9 @@ const initialState =require('../imports/initial-vending-machine.json');
 
 class VendingMachine {
     constructor() {
-        this.inventory = {};
-        this._coins = {
-            nickels:{ 
-                value:0.05 ,
-                 number:0 },
-            dimes:{ 
-                value:0.10 , 
-                number:0 },
-            quarters:{
-                 value:0.25 ,
-                 number:0 },
-            loonies:{
-                 value:1 , 
-                 number:0 },
-            toonies:{ 
-                value:2 ,
-                number:0 }
-        };
-        this._loaded = 0;
+        this.inventory = { ...initialState.inventory };
+        this._coins = { ...initialState.coins };
+        this._loaded = initialState.loaded;
     }
 
     insertCoin(coin){
