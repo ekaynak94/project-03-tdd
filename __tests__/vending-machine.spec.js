@@ -34,6 +34,10 @@ describe('VendingMachine', () => {
                 expect(test.message).toStrictEqual('coin inserted');
             });
 
+            it('loaded should get the total amout inserted', () => { 
+                expect(test.vendingMachine.loaded).toStrictEqual(0.10);
+            });
+
             it('coin count of that currency should increment by one', () => {
                 expect(test.vendingMachine._coins.dimes.number).toStrictEqual(test.expectedNumberOfDimes);
             });
