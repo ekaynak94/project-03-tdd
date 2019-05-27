@@ -77,6 +77,32 @@ describe('VendingMachine', () => {
             });
         });
 
+        describe('purchase item', () => {
+            
+            beforeEach(() => {
+                test.vendingMachine._loaded = 3.85;//assume the user has already inserted 3.85
+                test.purchasedItem = test.vendingMachine.purchaseItem('doritos');
+                test.expectedChange = {
+                    'toonies': 1,
+                    'quarters': 2,
+                    'dimes':1
+                }
+            });
+
+            describe('purchase doritos', () => {
+                it('should return an object with purchased item inside', () => {
+                    expect(test.purchasedItem.item).toStrictEqual('doritos');
+                });
+
+                it('should return an object with purchased expected change inside', () => {
+                    expect(test.purchasedItem.change).toEqual(test.expectedChange);
+                })
+            })
+
+
+
+        });
+
     })
 
 });
