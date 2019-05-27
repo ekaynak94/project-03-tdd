@@ -29,7 +29,7 @@ describe('VendingMachine', () => {
 
         describe('if inserted coin', () => {
             it('userfunds should increase by the value of inserted coin', () => {
-                expect(test.vendingMachine.userFunds).toStrictEqual(1);
+                expect(test.vendingMachine.userFunds).toStrictEqual(0.1);
             });
         })
 
