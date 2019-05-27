@@ -10,10 +10,11 @@ describe('VendingMachine', () => {
         test.initialMachine = initialState;  
     });
 
-    describe('user attempts to insert a coin', () => {
+    describe('coins', () => {
         
         beforeEach(() => {
             test.vendingMachine = new VendingMachine();
+            test.coins = test.initialMachine.coins;
         });
 
         describe('if inserted unknown currency', () => {
@@ -36,41 +37,26 @@ describe('VendingMachine', () => {
             it('coin count of that currency should increment by one', () => {
                 expect(test.vendingMachine._coins.dimes.number).toStrictEqual(test.expectedNumberOfDimes);
             });
+
+            describe('if reset coins', () => {
+                beforeEach(() => {
+                    test.vendingMachine.resetCoins()
+                });
+
+                it('should reset coin numbers in the machine to be equal to the initial states', () => {
+                    expect(test.vendingMachine._coins).toEqual(test.coins);
+                })
+            });
+
         })
 
     });
 
-    describe('resupplyCoins()', () => {
+    describe('inventory', () => {
         beforeEach(() => {
             test.vendingMachine = new VendingMachine();
-            test.expectedCoins = test.initialMachine.coins;
+            test.inventory = test.initialMachine.inventory;
         });
-
-        it('should reset coin numbers in the machine to be equal to the initial states', () => {
-            expect(test.vendingMachine.resupplyCoins()).toEqual(test.expectedCoins);
-        })
-        
-    });
-
-    describe('returnChange()', () => {
-        beforeEach(() => {
-            test.vendingMachine = new VendingMachine();
-            test.vendingMachine._loaded = 18.75;
-            test.expectedChange = {
-                toonies: 9,
-                quarters:3
-            }
-            test.expectedTooniesLeft = 1;
-        });
-
-        it('should return change with least amount of coins possible', () => {
-            expect(test.vendingMachine.returnChange()).toEqual(test.expectedChange)
-        });
-
-        it('should decrement coin numbers in inventory accordingly', () => {
-            expect(test.vendingMachine._coins.toonies.number).toEqual(1);
-        })
-        
-    });
+    })
 
 });
