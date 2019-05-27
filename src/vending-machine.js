@@ -39,6 +39,12 @@ class VendingMachine {
             },{}
         );
     }
+
+    purchaseItem(item) {
+        if (!this.inventory[item]) throw new Error('Item not found');
+        if (this.inventory[item].number <= 0) throw new Error('Item out of stock');
+        if(this._loaded<this.inventory[item].price) throw new Error('Loaded amount insufficent')
+    }
 }
 
 module.exports = VendingMachine;
