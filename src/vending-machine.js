@@ -16,10 +16,6 @@ class VendingMachine {
         return this._loaded;
     }
 
-    resetCoins() {
-        this._coins = { ...initialState.coins };
-    }
-
     getChange(valueToReturn) {
        return Object.keys(this._coins).sort((a, b) => this._coins[b].value - this._coins[a].value).reduce(
             (acc,cur) => {
@@ -53,9 +49,6 @@ class VendingMachine {
         return Object.keys(this.inventory).filter(item=>this.inventory[item].number>0).sort().map(name=>name.toUpperCase()).join(', ');
     }
 
-    resetInventory() {
-        this.inventory = { ...initialState.inventory };
-    }
 }
 
 module.exports = VendingMachine;
