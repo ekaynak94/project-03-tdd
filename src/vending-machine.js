@@ -22,6 +22,22 @@ class VendingMachine {
         this._coins = { ...initialState.coins };
         return this._coins;
     }
+
+    returnChange() {
+        let valueToReturn = this._loaded;
+        return Object.keys(this._coins).sort((a, b) => this._coins[b].value - this._coins[a].value).reduce(
+            (acc,cur) => {
+                const coinsToReturn = Math.min(Math.floor(valueToReturn / this._coins[cur].value),this._coins[cur].number);
+                valueToReturn -= coinsToReturn * this._coins[cur].value;
+                if (coinsToReturn > 0) { 
+                    return { ...acc, [cur]:coinsToReturn}
+                }
+                else {
+                    return {...acc}
+                }
+            },{}
+        );
+    }
 }
 
 module.exports = VendingMachine;
