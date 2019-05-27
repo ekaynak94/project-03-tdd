@@ -18,19 +18,21 @@ class VendingMachine {
                 value:2 ,
                 number:0 }
         };
-        this._userFunds = 0;
+        this._loaded = 0;
     }
 
     insertCoin(coin){
         if (!this._coins[coin]) throw new Error('currency not recognized');
         this._coins[coin].number = this._coins[coin].number + 1;
-        this._userFunds += this._coins[coin].value;
-        return `Available funds: ${this._userFunds}`;
+        this._loaded += this._coins[coin].value;
+        return `Total amount loaded: ${this._loaded}`;
     }
 
-    get userFunds() {
-        return this._userFunds;
+    get loaded() {
+        return this._loaded;
     }
+
+    returnChange(){}
 }
 
 module.exports = VendingMachine;

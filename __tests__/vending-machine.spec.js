@@ -28,8 +28,8 @@ describe('VendingMachine', () => {
         });
 
         describe('if inserted coin', () => {
-            it('should return accumulated user funds', () => {
-                expect(test.vendingMachine.insertCoin("dimes")).toStrictEqual(`Available funds: 0.1`);
+            it('should return total loaded amount', () => {
+                expect(test.vendingMachine.insertCoin("dimes")).toStrictEqual(`Total amount loaded: 0.1`);
             });
         })
 
