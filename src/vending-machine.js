@@ -30,6 +30,7 @@ class VendingMachine {
                 const coinsToReturn = Math.min(Math.floor(valueToReturn / this._coins[cur].value),this._coins[cur].number);
                 valueToReturn -= coinsToReturn * this._coins[cur].value;
                 if (coinsToReturn > 0) { 
+                    this._coins[cur].number = this._coins[cur].number - coinsToReturn;
                     return { ...acc, [cur]:coinsToReturn}
                 }
                 else {
