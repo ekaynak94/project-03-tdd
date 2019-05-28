@@ -25,15 +25,15 @@ describe('VendingMachine', () => {
         describe('if inserted coin', () => {
 
             beforeEach(() => {
-                test.expectedNumberOfDimes = test.vendingMachine._coins.dimes.quantity+1;
-                test.message=test.vendingMachine.insertCoin("dimes");    
+                test.expectedNumberOfDimes = test.vendingMachine._coins.dimes.quantity + 1;
+                test.message = test.vendingMachine.insertCoin("dimes");
             });
 
             it('should return a message', () => {
                 expect(test.message).toStrictEqual('coin inserted');
             });
 
-            it('loaded should get the total amout inserted', () => { 
+            it('loaded should get the total amout inserted', () => {
                 expect(test.vendingMachine.loaded).toStrictEqual(0.10);
             });
 
@@ -41,7 +41,32 @@ describe('VendingMachine', () => {
                 expect(test.vendingMachine._coins.dimes.quantity).toStrictEqual(test.expectedNumberOfDimes);
             });
 
-        })
+        });
+
+        describe('resupply coins', () => {
+            describe('if an unknown coin type is provided as an argument', () => {
+
+                it('should return an error', () => {
+                    expect(() => test.vendingMachine.resupplyCoins({ dimes: 2, pennies: 5 })).toThrow(new Error('Attempted to resupply unrecognized coin type'))
+                });
+
+            });
+            describe('if an non positive integer quantity is provided as an argument', () => {
+
+                it('should return an error', () => {
+                    expect(() => test.vendingMachine.resupplyCoins({ dimes: -4 })).toThrow(new Error('Quantity provided has to be a positive integer'))
+                });
+                
+            });
+
+            describe('if quantity provided as an argument is not a number', () => {
+
+                it('should return an error', () => {
+                    expect(() => test.vendingMachine.resupplyCoins({ dimes: 'not a number' })).toThrow(new Error('Quantity provided has to be a positive integer'))
+                });
+                
+            });
+        });
 
     });
 
@@ -99,6 +124,31 @@ describe('VendingMachine', () => {
 
             });
 
+        });
+
+        describe('refill inventory', () => {
+            describe('if an unknown item name is provided as an argument', () => {
+
+                it('should return an error', () => {
+                    expect(() => test.vendingMachine.refillInventory({fanta:5,sprite:1})).toThrow(new Error('Attempted to refill unrecognized items'))
+                });
+
+            });
+            describe('if an non positive integer quantity is provided as an argument', () => {
+
+                it('should return an error', () => {
+                    expect(() => test.vendingMachine.refillInventory({fanta:-2})).toThrow(new Error('Quantity provided has to be a positive integer'))
+                });
+                
+            });
+
+            describe('if quantity provided as an argument is not a number', () => {
+
+                it('should return an error', () => {
+                    expect(() => test.vendingMachine.refillInventory({coke:'not a number'})).toThrow(new Error('Quantity provided has to be a positive integer'))
+                });
+                
+            });
         });
 
     })
