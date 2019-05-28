@@ -50,10 +50,10 @@ class VendingMachine {
     }
 
     refillInventory(updates) {
-
-        Object.keys(updates).map((item) => {
-            if (!this._inventory[item]) throw new Error('Attempted to refill unrecognized items');
-            if (typeof updates[item] !== 'number'||updates[item]<0)throw new Error('Quantity provided has to be a positive integer');
+        const items = Object.keys(updates);
+        if (items.find(item => !this._inventory[item])) throw new Error('Attempted to refill unrecognized items');
+        if (items.find(item => ( typeof updates[item] !== 'number' || updates[item] < 0 )))throw new Error('Quantity provided has to be a positive integer');
+        items.map((item) => {
             if (this._inventory[item])this._inventory[item].quantity = this._inventory[item].quantity+updates[item]
         });
         
