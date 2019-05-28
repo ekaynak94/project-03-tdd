@@ -62,10 +62,10 @@ class VendingMachine {
     }
 
     resupplyCoins(updates) {
- 
-        Object.keys(updates).map((coin) => {
-            if (!this._coins[coin]) throw new Error('Attempted to resupply unrecognized coin type');
-            if (typeof updates[coin] !== 'number'||updates[coin]<0)throw new Error('Quantity provided has to be a positive integer');
+        const coins = Object.keys(updates);
+        if (coins.find(coin=>!this._coins[coin])) throw new Error('Attempted to resupply unrecognized coin type');
+        if (coins.find(coin=>(typeof updates[coin] !== 'number'||updates[coin]<0)))throw new Error('Quantity provided has to be a positive integer');
+        coins.map((coin) => {
             if (this._coins[coin])this._coins[coin].quantity = this._coins[coin].quantity +updates[coin];
         });
         
