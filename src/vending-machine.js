@@ -49,6 +49,29 @@ class VendingMachine {
         return this._inventory;
     }
 
+    refillInventory(updates) {
+
+        Object.keys(updates).map((item) => {
+            if (!this._inventory[item]) throw new Error('Attempted to refill unrecognized items');
+            if (typeof updates[item] !== 'number'||updates[item]<0)throw new Error('Quantity provided has to be a positive integer');
+            if (this._inventory[item])this._inventory[item].quantity = this._inventory[item].quantity+updates[item]
+        });
+        
+        return 'items refilled';
+    
+    }
+
+    resupplyCoins(updates) {
+ 
+        Object.keys(updates).map((coin) => {
+            if (!this._coins[coin]) throw new Error('Attempted to resupply unrecognized coin type');
+            if (typeof updates[coin] !== 'number'||updates[coin]<0)throw new Error('Quantity provided has to be a positive integer');
+            if (this._coins[coin])this._coins[coin].quantity = this._coins[coin].quantity +updates[coin];
+        });
+        
+        return 'coins resupplied';
+    }
+
 }
 
 module.exports = VendingMachine;
